@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wei.DapperExtension</name>
+    </assembly>
+    <members>
+        <member name="T:Wei.DapperExtension.Attributes.KeyAttribute">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="M:Wei.DapperExtension.Attributes.KeyAttribute.#ctor(System.Boolean)">
+            <summary>
+            KeyAttribute
+            </summary>
+            <param name="isIncrement">是否自增长的主键</param>
+        </member>
+        <member name="P:Wei.DapperExtension.Attributes.KeyAttribute.IsIncrement">
+            <summary>
+            是否自增
+            </summary>
+        </member>
+        <member name="M:Wei.DapperExtension.Attributes.WriteAttribute.#ctor(System.Boolean)">
+            <summary>
+            可写特性
+            </summary>
+            <param name="isWrite">指定字段在数据库中是否可写</param>
+        </member>
+        <member name="P:Wei.DapperExtension.Attributes.WriteAttribute.IsWrite">
+            <summary>
+            指定字段在数据库中是否可写
+            </summary>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Insert``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entity">实体</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
+            <returns>实体</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.InsertAsync``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entity">实体</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Wei.DapperExtension.DbConnectionExtension.Insert``1(System.Data.IDbConnection,System.Collections.Generic.IEnumerable{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})" -->
+        <!-- Badly formed XML comment ignored for member "M:Wei.DapperExtension.DbConnectionExtension.InsertAsync``1(System.Data.IDbConnection,System.Collections.Generic.IEnumerable{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})" -->
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Delete``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="id">主键Id</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.DeleteAsync``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="id">主键Id</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Delete``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entity">要删除的实体（主键必须有值）</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.DeleteAsync``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entity">要删除的实体（主键必须有值）</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Delete``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">删除条件(避免删除全部数据，必须有条件)</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.DeleteAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">删除条件(避免删除全部数据，必须有条件)</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.FirstOrDefault``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            根据条件获取第一个
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">过滤条件</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.FirstOrDefaultAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            根据条件获取第一个
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">过滤条件</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Get``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            根据Id获取
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="id">主键id</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.GetAsync``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            根据Id获取
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="id">主键id</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Update``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            更新(根据主键)
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entity">需要更新实体对象,主键必须有值</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.UpdateAsync``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            更新(根据主键)
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entity">需要更新实体对象,主键必须有值</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Update``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Action{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            更新(根据条件更新指定字段)
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">更新条件(避免全表更新，必须有值)</param>
+            <param name="updateAction">更新指定字段回调函数</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.UpdateAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Action{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            更新(根据条件更新指定字段)
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">更新条件(避免全表更新，必须有值)</param>
+            <param name="updateAction">更新指定字段回调函数</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.GetAll``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            查询所有
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">查询条件</param>
+            <param name="orderBy">排序(eg: order by id desc)</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体集合</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.GetAllAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            查询所有
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="predicate">查询条件</param>
+            <param name="orderBy">排序(eg: order by id desc)</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>实体集合</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.GetPage``1(System.Data.IDbConnection,System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            分页查询
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页条数</param>
+            <param name="predicate">查询条件</param>
+            <param name="orderBy">排序,默认以主键倒序(eg: order by id desc)</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>Tuple(总记录数,分页数据)</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.GetPageAsync``1(System.Data.IDbConnection,System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            分页查询
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页条数</param>
+            <param name="predicate">查询条件</param>
+            <param name="orderBy">排序,默认以主键倒序(eg: order by id desc)</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <returns>Tuple(总记录数,分页数据)</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.ObjectExtension.Copy``1(``0)">
+            <summary>
+            拷贝对象
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="t">被拷贝的对象</param>
+            <returns>拷贝后的新对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.ObjectExtension.Copy``1(System.Collections.Generic.List{``0})">
+            <summary>
+            拷贝对象(集合)
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="t">被拷贝的对象</param>
+            <returns>拷贝后的新对象集合</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.ObjectExtension.MapTo``2(``0)">
+            <summary>
+            对象映射
+            </summary>
+            <typeparam name="Source">源类型</typeparam>
+            <typeparam name="Target">目标类型</typeparam>
+            <param name="source">源实体对象</param>
+            <returns>映射后的对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.ObjectExtension.MapTo``2(System.Collections.Generic.List{``0})">
+            <summary>
+            对象映射
+            </summary>
+            <typeparam name="Source">源类型</typeparam>
+            <typeparam name="Target">目标类型</typeparam>
+            <param name="source">源实体对象</param>
+            <returns>映射后的对象</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetTypePropertiesCache``1(System.Boolean)">
+            <summary>
+            获取所有属性缓存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="excludeIncrementKey">是否排除自增主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetIncrementKey``1">
+            <summary>
+            获取自增主键
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.HasIncrementKey``1">
+            <summary>
+            是否有自增主键
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetPrimaryKeys``1">
+            <summary>
+            获取主键
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetTableName``1">
+            <summary>
+            获取表名
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetColumnName(System.Reflection.PropertyInfo)">
+            <summary>
+            获取字段名称
+            </summary>
+            <param name="pi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetQuerySql``1(System.Reflection.PropertyInfo)">
+            <summary>
+            获取GetSql
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

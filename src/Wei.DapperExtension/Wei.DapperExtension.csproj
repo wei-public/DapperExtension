@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>DapperExtension
+Support  SqlServer/MySql/SqlLite</Description>
+    <Authors>Wei</Authors>
+    <RepositoryUrl>https://github.com/wei-public/DapperExtension</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>DapperExtension
+Support  SqlServer/MySql/SqlLite</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/wei-public/DapperExtension</PackageProjectUrl>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Version>1.0.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\Weekly\GitHub\DapperExtension\src\Wei.DapperExtension\Wei.DapperExtension.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>E:\Weekly\GitHub\DapperExtension\src\Wei.DapperExtension\Wei.DapperExtension.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+  </ItemGroup>
+
+</Project>
