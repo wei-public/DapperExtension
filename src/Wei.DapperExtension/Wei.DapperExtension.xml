@@ -52,10 +52,33 @@
             <param name="entity">实体</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Wei.DapperExtension.DbConnectionExtension.Insert``1(System.Data.IDbConnection,System.Collections.Generic.IEnumerable{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})" -->
-        <!-- Badly formed XML comment ignored for member "M:Wei.DapperExtension.DbConnectionExtension.InsertAsync``1(System.Data.IDbConnection,System.Collections.Generic.IEnumerable{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})" -->
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.Insert``1(System.Data.IDbConnection,System.Collections.Generic.IEnumerable{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            新增(批量)
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entities">实体集合</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
+            <returns>受影响的行数</returns>
+        </member>
+        <member name="M:Wei.DapperExtension.DbConnectionExtension.InsertAsync``1(System.Data.IDbConnection,System.Collections.Generic.IEnumerable{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
+            <summary>
+            新增(批量)
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="connection">数据库连接对象</param>
+            <param name="entities">实体集合</param>
+            <param name="transaction">事务</param>
+            <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
+            <returns>受影响的行数</returns>
+        </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.Delete``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
             <summary>
             删除
@@ -65,6 +88,7 @@
             <param name="id">主键Id</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.DeleteAsync``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -76,6 +100,7 @@
             <param name="id">主键Id</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.Delete``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -87,6 +112,7 @@
             <param name="entity">要删除的实体（主键必须有值）</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.DeleteAsync``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -98,6 +124,7 @@
             <param name="entity">要删除的实体（主键必须有值）</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.Delete``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -109,6 +136,7 @@
             <param name="predicate">删除条件(避免删除全部数据，必须有条件)</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.DeleteAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -120,17 +148,19 @@
             <param name="predicate">删除条件(避免删除全部数据，必须有条件)</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.FirstOrDefault``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
             <summary>
-            根据条件获取第一个
+            根据条件获取第一个或默认
             </summary>
             <typeparam name="T">实体类型</typeparam>
             <param name="connection">数据库连接对象</param>
             <param name="predicate">过滤条件</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体对象</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.FirstOrDefaultAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -142,6 +172,7 @@
             <param name="predicate">过滤条件</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体对象</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.Get``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -153,6 +184,7 @@
             <param name="id">主键id</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体对象</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.GetAsync``1(System.Data.IDbConnection,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -164,6 +196,7 @@
             <param name="id">主键id</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体对象</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.Update``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -175,6 +208,7 @@
             <param name="entity">需要更新实体对象,主键必须有值</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.UpdateAsync``1(System.Data.IDbConnection,``0,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -186,6 +220,7 @@
             <param name="entity">需要更新实体对象,主键必须有值</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.Update``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Action{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -198,6 +233,7 @@
             <param name="updateAction">更新指定字段回调函数</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.UpdateAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Action{``0},System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -210,6 +246,7 @@
             <param name="updateAction">更新指定字段回调函数</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>受影响的行数</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.GetAll``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -222,6 +259,7 @@
             <param name="orderBy">排序(eg: order by id desc)</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体集合</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.GetAllAsync``1(System.Data.IDbConnection,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -234,6 +272,7 @@
             <param name="orderBy">排序(eg: order by id desc)</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>实体集合</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.GetPage``1(System.Data.IDbConnection,System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -248,6 +287,7 @@
             <param name="orderBy">排序,默认以主键倒序(eg: order by id desc)</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>Tuple(总记录数,分页数据)</returns>
         </member>
         <member name="M:Wei.DapperExtension.DbConnectionExtension.GetPageAsync``1(System.Data.IDbConnection,System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Action{System.String,System.Object})">
@@ -262,6 +302,7 @@
             <param name="orderBy">排序,默认以主键倒序(eg: order by id desc)</param>
             <param name="transaction">事务</param>
             <param name="timeOut">超时时间</param>
+            <param name="sqlExecuteBeforeAction">sql执行之前回调</param>
             <returns>Tuple(总记录数,分页数据)</returns>
         </member>
         <member name="M:Wei.DapperExtension.ObjectExtension.Copy``1(``0)">
@@ -331,6 +372,11 @@
             </summary>
             <typeparam name="T"></typeparam>
             <returns></returns>
+        </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.SetTableName``1(System.String)">
+            <summary>
+            设置数据库表名称(对于表名称动态生成的，可以动态设置表名称)
+            </summary>
         </member>
         <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetColumnName(System.Reflection.PropertyInfo)">
             <summary>

@@ -163,6 +163,11 @@ namespace Wei.DapperExtension.Utils
         }
 
         /// <summary>
+        /// 设置数据库表名称(对于表名称动态生成的，可以动态设置表名称)
+        /// </summary>
+        public static void SetTableName<T>(string tableName) => typeTableNameCache[typeof(T).TypeHandle] = tableName;
+
+        /// <summary>
         /// 获取字段名称
         /// </summary>
         /// <param name="pi"></param>

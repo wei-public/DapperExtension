@@ -7,12 +7,11 @@ Support  SqlServer/MySql/SqlLite</Description>
     <Authors>Wei</Authors>
     <RepositoryUrl>https://github.com/wei-public/DapperExtension</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>DapperExtension
-Support  SqlServer/MySql/SqlLite</PackageReleaseNotes>
+    <PackageReleaseNotes>支持手动设置实体表名称</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/wei-public/DapperExtension</PackageProjectUrl>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-    <Version>1.0.0.1</Version>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <FileVersion>1.0.0.2</FileVersion>
+    <Version>1.0.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
