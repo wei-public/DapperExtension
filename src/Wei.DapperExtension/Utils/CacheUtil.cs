@@ -168,6 +168,17 @@ namespace Wei.DapperExtension.Utils
         public static void SetTableName<T>(string tableName) => typeTableNameCache[typeof(T).TypeHandle] = tableName;
 
         /// <summary>
+        /// 重置数据库表名称
+        /// </summary>
+        public static void ReSetTableName<T>()
+        {
+            var type = typeof(T);
+            var attribute = type.GetCustomAttribute<TableAttribute>(false);
+            var tableName = attribute == null ? type.Name : attribute.Name;
+            typeTableNameCache[type.TypeHandle] = tableName;
+        }
+
+        /// <summary>
         /// 获取字段名称
         /// </summary>
         /// <param name="pi"></param>

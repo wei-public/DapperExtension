@@ -378,6 +378,11 @@
             设置数据库表名称(对于表名称动态生成的，可以动态设置表名称)
             </summary>
         </member>
+        <member name="M:Wei.DapperExtension.Utils.CacheUtil.ReSetTableName``1">
+            <summary>
+            重置数据库表名称
+            </summary>
+        </member>
         <member name="M:Wei.DapperExtension.Utils.CacheUtil.GetColumnName(System.Reflection.PropertyInfo)">
             <summary>
             获取字段名称
