@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace Wei.DapperExtension.Utils
 {
-    internal static class WhereBuilder
+    public static class WhereBuilder
     {
         private static readonly IDictionary<ExpressionType, string> nodeTypeMappings = new Dictionary<ExpressionType, string>
         {
@@ -32,11 +32,11 @@ namespace Wei.DapperExtension.Utils
             {ExpressionType.Subtract, "-"}
         };
 
-        private static WherePart Recurse<T>(ref int i, 
-            Expression expression, 
+        private static WherePart Recurse<T>(ref int i,
+            Expression expression,
             bool isUnary = false,
-            string prefix = null, 
-            string postfix = null, 
+            string prefix = null,
+            string postfix = null,
             bool left = true)
         {
             switch (expression)
@@ -114,9 +114,7 @@ namespace Wei.DapperExtension.Utils
             string prefix, string postfix, bool left)
         {
             if (isUnary && expression.Type == typeof(bool))
-            {
-                return WherePart.Concat(Recurse<T>(ref i, expression), "=", WherePart.IsSql("1"));
-            }
+                return WherePart.Concat(Recurse<T>(ref i, expression), "=", WherePart.IsSql("0"));
 
             if (expression.Member is PropertyInfo property)
             {
@@ -128,8 +126,10 @@ namespace Wei.DapperExtension.Utils
 
                 if (property.PropertyType == typeof(bool))
                 {
-                    var colName = CacheUtil.GetColumnName(property);
-                    return WherePart.IsSql($"{colName}=1");
+                    var objVlue = GetValue(expression);
+                    if (bool.TryParse(objVlue.ToString(), out bool value))
+                        return WherePart.IsSql(value ? "1" : "0");
+                    return WherePart.IsSql($"{property.Name} = 0");
                 }
             }
 
@@ -154,9 +154,12 @@ namespace Wei.DapperExtension.Utils
             {
                 case null:
                     return WherePart.IsSql("NULL");
+                case long _:
                 case int _:
                     return WherePart.IsSql(value.ToString());
                 case string text:
+                    if (long.TryParse(text, out long longValue))
+                        return WherePart.IsSql($"'{prefix}{longValue}{postfix}'");
                     value = prefix + text + postfix;
                     break;
             }

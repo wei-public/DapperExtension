@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Wei.DapperExtension.Utils
 {
-    internal class WherePart
+    public class WherePart
     {
         public WherePart() { }
         private WherePart(string sql, params Parameter[] parameters) : this(sql, parameters.ToList()) { }
@@ -69,15 +69,15 @@ namespace Wei.DapperExtension.Utils
         {
             if (right.Sql.Equals("NULL", StringComparison.InvariantCultureIgnoreCase))
                 @operator = @operator == "=" ? "IS" : "IS NOT";
-
-            return new WherePart($"({left.Sql} {@operator} {right.Sql})", left.Parameters.Union(right.Parameters));
+            var sql = "OR".Equals(@operator, StringComparison.InvariantCultureIgnoreCase) ? $"({left.Sql} {@operator} {right.Sql})" : $"{left.Sql} {@operator} {right.Sql}";
+            return new WherePart(sql, left.Parameters.Union(right.Parameters));
         }
 
         public static WherePart Empty => new WherePart(string.Empty);
     }
 
 
-    internal class Parameter
+    public class Parameter
     {
         public Parameter(string key, object value, DbType? type = null)
         {
