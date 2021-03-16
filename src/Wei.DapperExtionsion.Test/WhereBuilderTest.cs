@@ -177,7 +177,7 @@ namespace Wei.DapperExtionsion.Test
         [Fact(DisplayName = "And")]
         public void Test_And()
         {
-            Expression<Func<BuilderTest, bool>> expression_and = x => x.Id == 1 && x.Name == "123" ;
+            Expression<Func<BuilderTest, bool>> expression_and = x => x.Id == 1 && x.Name == "123";
             var builder_and = expression_and.Build();
             Assert.Equal("Id = 1 AND Name = '123'", builder_and.Sql);
         }
@@ -186,8 +186,16 @@ namespace Wei.DapperExtionsion.Test
         public void Test_Or()
         {
             Expression<Func<BuilderTest, bool>> expression_or = x => x.Id == 1 || x.Name.StartsWith("123");
-            var builder_or= expression_or.Build();
+            var builder_or = expression_or.Build();
             Assert.Equal("(Id = 1 OR Name LIKE '123%')", builder_or.Sql);
+        }
+
+        [Fact(DisplayName = "NotBool")]
+        public void Test_Bool()
+        {
+            Expression<Func<BuilderTest, bool>> expression_or = x => !x.IsDelete;
+            var builder_or = expression_or.Build();
+            Assert.Equal("IsDelete = 1", builder_or.Sql);
         }
     }
 }

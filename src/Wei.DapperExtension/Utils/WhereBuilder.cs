@@ -37,14 +37,15 @@ namespace Wei.DapperExtension.Utils
             bool isUnary = false,
             string prefix = null,
             string postfix = null,
-            bool left = true)
+            bool left = true,
+            bool isNotOperator = false)
         {
             switch (expression)
             {
                 case UnaryExpression unary: return UnaryExpressionExtract<T>(ref i, unary);
                 case BinaryExpression binary: return BinaryExpressionExtract<T>(ref i, binary);
                 case ConstantExpression constant: return ConstantExpressionExtract(ref i, constant, isUnary, prefix, postfix, left);
-                case MemberExpression member: return MemberExpressionExtract<T>(ref i, member, isUnary, prefix, postfix, left);
+                case MemberExpression member: return MemberExpressionExtract<T>(ref i, member, isUnary, prefix, postfix, left, isNotOperator);
                 case MethodCallExpression method: return MethodCallExpressionExtract<T>(ref i, method);
                 case InvocationExpression invocation: return InvocationExpressionExtract<T>(ref i, invocation, left);
                 default: throw new Exception("Unsupported expression: " + expression.GetType().Name);
@@ -111,10 +112,12 @@ namespace Wei.DapperExtension.Utils
         }
 
         private static WherePart MemberExpressionExtract<T>(ref int i, MemberExpression expression, bool isUnary,
-            string prefix, string postfix, bool left)
+            string prefix, string postfix, bool left, bool isNotOperator = false)
         {
             if (isUnary && expression.Type == typeof(bool))
-                return WherePart.Concat(Recurse<T>(ref i, expression), "=", WherePart.IsSql("0"));
+            {
+                return WherePart.Concat(Recurse<T>(ref i, expression), "=", WherePart.IsSql(isNotOperator ? "1" : "0"));
+            }
 
             if (expression.Member is PropertyInfo property)
             {
@@ -136,6 +139,8 @@ namespace Wei.DapperExtension.Utils
             if (expression.Member is FieldInfo || left == false)
             {
                 var value = GetValue(expression);
+                if (value is bool boolValue)
+                    return WherePart.IsSql(boolValue ? "1" : "0");
                 if (value is string textValue)
                     value = prefix + textValue + postfix;
 
@@ -168,7 +173,7 @@ namespace Wei.DapperExtension.Utils
 
             var result = ((bool)value) ? "1" : "0";
             if (left)
-                result = result.Equals("1") ? "1=1" : "0=0";
+                result = result.Equals("1") ? "1 = 1" : "0 = 0";
             return WherePart.IsSql(result);
         }
 
@@ -176,7 +181,13 @@ namespace Wei.DapperExtension.Utils
             => WherePart.Concat(Recurse<T>(ref i, expression.Left), NodeTypeToString(expression.NodeType), Recurse<T>(ref i, expression.Right, left: false));
 
         private static WherePart UnaryExpressionExtract<T>(ref int i, UnaryExpression expression)
-            => WherePart.Concat(NodeTypeToString(expression.NodeType), Recurse<T>(ref i, expression.Operand, true));
+        {
+            var @operator = NodeTypeToString(expression.NodeType);
+            var isNotOperator = "NOT".Equals(@operator) && expression.Operand.Type == typeof(bool) && expression.Operand is MemberExpression m && m.Member is PropertyInfo;
+            if (isNotOperator)
+                return Recurse<T>(ref i, expression.Operand, true, isNotOperator: isNotOperator);
+            return WherePart.Concat(@operator, Recurse<T>(ref i, expression.Operand, true, isNotOperator: isNotOperator));
+        }
 
         private static object GetValue(Expression member)
         {
